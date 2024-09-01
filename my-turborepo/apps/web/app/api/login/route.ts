@@ -1,17 +1,13 @@
 import { NextRequest, NextResponse } from "next/server"
 
 export const POST = async (request: NextRequest) => {
-
     const formData = (await request.formData()).get('password');
-
     const url = request.nextUrl.clone();
     const locale = url.pathname.split('/')[2];
 
     if (formData === '123') {
-
         url.pathname = `/af/${locale}/demo`;
     } else {
-
         url.pathname = `/af/${locale}/123`;
     }
 
