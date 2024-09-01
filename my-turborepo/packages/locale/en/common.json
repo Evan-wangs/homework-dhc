@@ -1,0 +1,7 @@
+{
+    "welcomeMessage": "Welcome to the homepage",
+    "loginButton": "Login",
+    "enterPassword": "Enter password",
+    "demoPage": "Welcome to the demo page",
+    "errorPage": "Incorrect password. Please try again."
+}
