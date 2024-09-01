@@ -1,0 +1,6 @@
+{
+    "name": "@repo/local-lint",
+    "scripts": {
+        "test": "echo local-lint"
+    }
+}

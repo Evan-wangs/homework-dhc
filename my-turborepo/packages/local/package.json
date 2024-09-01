@@ -1,0 +1,9 @@
+{
+    "name": "@repo/local",
+    "exports": {
+        "./base": "./src/base.ts",
+        "./cn": "./src/cn.ts",
+        "./en": "./src/en.ts",
+        "./getLocal": "./src/getLocal.ts"
+    }
+}

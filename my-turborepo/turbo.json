@@ -1,5 +1,7 @@
 {
   "$schema": "https://turbo.build/schema.json",
+  "globalEnv": ["globalEnv"],
+  "globalPassThroughEnv": ["Evan"],
   "ui": "tui",
   "tasks": {
     "build": {
@@ -13,6 +15,14 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "web#lint": {
+    },
+    "test": {
+      "cache": false,
+      "persistent": true
+    },
+    "local-lint":{
     }
   }
 }
