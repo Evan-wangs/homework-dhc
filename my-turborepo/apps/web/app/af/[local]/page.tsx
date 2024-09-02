@@ -25,7 +25,7 @@ export default ({params}: {params: {local: LocalType}}) => {
       </form>
 
       <p>
-        环境变量文件 ENV_NAME 的值: {process.env.NEXT_PUBLIC_NAME}
+        环境变量文件 ENV_NAME 的值: {process.env.NAME}
       </p>
       <p>
         环境变量文件 ENV_NAME 的值: {process.env.NEXT_PUBLIC_ENV_NAME}

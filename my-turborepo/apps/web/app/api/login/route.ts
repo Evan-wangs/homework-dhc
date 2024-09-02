@@ -1,17 +1,43 @@
 import { NextRequest, NextResponse } from "next/server"
 
+function getCookieValue(cookies: string, name: string) {
+    const prefix = name + "=";
+    const start = cookies.indexOf(prefix);
+    
+    if (start === -1) {
+        return null;
+    }
+
+    let end = cookies.indexOf(";", start);
+    if (end === -1) {
+        end = cookies.length;
+    }
+
+    return cookies.substring(start + prefix.length, end);
+}
+
 export const POST = async (request: NextRequest) => {
     const formData = (await request.formData()).get('password');
     const url = request.nextUrl.clone();
-    const locale = url.pathname.split('/')[2];
+    const locale = request.headers.get('accept-language')?.startsWith('zh-CN') ? "cn" : "en";
+
+    let cookies = request.cookies.toString();
+    cookies += "; name=af"; // test 用
+    const name = getCookieValue(cookies, "name");
+
+    let targetUrl = url.origin;
 
     if (formData === '123') {
-        url.pathname = `/af/${locale}/demo`;
+        if (name !== 'af') {
+            targetUrl = 'https://www.baidu.com/';
+        } else {
+            targetUrl += `/af/${locale}/demo`;
+        }
     } else {
-        url.pathname = `/af/${locale}/123`;
+        targetUrl += `/af/${locale}/123`;
     }
 
-    return NextResponse.redirect(url.origin + url.pathname);
+    return NextResponse.redirect(targetUrl);
 };
 
 export const GET = (request: NextRequest, { params }: { params: { id: string } }) => {
